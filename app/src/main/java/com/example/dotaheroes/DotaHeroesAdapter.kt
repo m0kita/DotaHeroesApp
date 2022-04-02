@@ -22,6 +22,17 @@ RecyclerView.Adapter<DotaHeroesAdapter.MyViewHolder>(){
             .load("https://api.opendota.com" + dotaArray[position].img)
             .into(holder.binding.heroIcon)
         holder.binding.heroName.text = dotaArray[position].localized_name
+        when(dotaArray[position].primary_attr) {
+            "agi" -> Glide.with(context)
+                .load("https://static.wikia.nocookie.net/dota2_gamepedia/images/2/2d/Agility_attribute_symbol.png/revision/latest/scale-to-width-down/45?cb=20180323111717")
+                .into(holder.binding.heroAttribute)
+            "str" -> Glide.with(context)
+                .load("https://static.wikia.nocookie.net/dota2_gamepedia/images/7/7a/Strength_attribute_symbol.png/revision/latest/scale-to-width-down/45?cb=20180323111829")
+                .into(holder.binding.heroAttribute)
+            else -> Glide.with(context)
+                .load("https://static.wikia.nocookie.net/dota2_gamepedia/images/5/56/Intelligence_attribute_symbol.png/revision/latest/scale-to-width-down/45?cb=20180323111753")
+                .into(holder.binding.heroAttribute)
+        }
     }
 
     override fun getItemCount(): Int {
