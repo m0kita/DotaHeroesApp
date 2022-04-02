@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         runBlocking {
             body = client.get("https://api.opendota.com/api/heroStats")
         }
-        binding.dotaHeroesRv.adapter = DotaHeroesAdapter(body)
+        binding.dotaHeroesRv.adapter = DotaHeroesAdapter(body, this)
         binding.dotaHeroesRv.layoutManager = LinearLayoutManager(this)
 
         client.close()

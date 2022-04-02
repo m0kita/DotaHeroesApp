@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.dotaheroes.databinding.DotaHeroesRvItemBinding
 
 
-class DotaHeroesAdapter(val dotaArray: List<DotaHeroes>):
+class DotaHeroesAdapter(val dotaArray: List<DotaHeroes>, val context: Context):
 RecyclerView.Adapter<DotaHeroesAdapter.MyViewHolder>(){
     inner class MyViewHolder(var binding: DotaHeroesRvItemBinding) : RecyclerView.ViewHolder(binding.root){}
 
@@ -18,7 +18,9 @@ RecyclerView.Adapter<DotaHeroesAdapter.MyViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Glide.with().load(dotaArray[position].img).into(holder.binding.heroIcon)
+        Glide.with(context)
+            .load("https://api.opendota.com" + dotaArray[position].img)
+            .into(holder.binding.heroIcon)
         holder.binding.heroName.text = dotaArray[position].localized_name
     }
 

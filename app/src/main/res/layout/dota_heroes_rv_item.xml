@@ -6,6 +6,7 @@
     android:gravity="center_vertical">
     <ImageView
         android:id="@+id/hero_icon"
+        android:src="@drawable/antimage"
         android:layout_margin="20dp"
         android:layout_width="128dp"
         android:layout_height="72dp"/>
